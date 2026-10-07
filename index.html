@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Clinical Pharmacy Preceptor</title>
+
+<style>
+
+:root {
+    --burgundy: #7b1e3a;
+    --burgundy-dark: #561329;
+    --burgundy-light: #9f3152;
+
+    --background: #f6f2f3;
+    --card: #ffffff;
+
+    --text: #292323;
+    --muted: #756b6b;
+
+    --border: #e5dfe1;
+
+    --green: #237a57;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b101f,
+            #701a36,
+            #3b101f
+        );
+
+    padding: 12px;
+
+    color: var(--text);
+}
+
+.container {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    height: calc(100vh - 24px);
+
+    margin: auto;
+
+    background: var(--card);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.30);
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy-dark),
+            var(--burgundy)
+        );
+
+    color: white;
+
+    padding: 17px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 3px solid #b64b6d;
+}
+
+.header-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.header-icon {
+
+    font-size: 26px;
+}
+
+.header-main {
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+.header-sub {
+
+    font-size: 11px;
+
+    opacity: .82;
+
+    margin-top: 3px;
+}
+
+.new-case-btn {
+
+    background: rgba(255,255,255,.13);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    padding: 8px 10px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* ================= WELCOME ================= */
+
+#welcome {
+
+    margin: auto;
+
+    width: 90%;
+
+    max-width: 570px;
+
+    background: #fcf8f9;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.welcome-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+.welcome-title {
+
+    color: var(--burgundy);
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.start-btn {
+
+    margin-top: 20px;
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy),
+            var(--burgundy-light)
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* ================= CASE STATUS ================= */
+
+#case-bar {
+
+    display: none;
+
+    padding: 9px 14px;
+
+    background: #fffafa;
+
+    border-bottom: 1px solid var(--border);
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+}
+
+.status {
+
+    color: var(--green);
+
+    font-weight: 700;
+}
+
+
+/* ================= CHAT ================= */
+
+#chat-container {
+
+    flex: 1;
+
+    padding: 18px;
+
+    overflow-y: auto;
+
+    background: var(--background);
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.message {
+
+    max-width: 92%;
+
+    padding: 13px 16px;
+
+    border-radius: 16px;
+
+    line-height: 1.75;
+
+    font-size: 14px;
+
+    word-wrap: break-word;
+}
+
+.user-msg {
+
+    align-self: flex-start;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy),
+            var(--burgundy-light)
+        );
+
+    color: white;
+
+    border-bottom-left-radius: 4px;
+}
+
+.ai-msg {
+
+    align-self: flex-end;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-bottom-right-radius: 4px;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.04);
+}
+
+.ai-msg strong {
+
+    color: var(--burgundy);
+}
+
+.ai-msg h3 {
+
+    color: var(--burgundy);
+
+    margin-top: 12px;
+
+    margin-bottom: 7px;
+}
+
+
+/* ================= QUICK ACTIONS ================= */
+
+#quick-actions {
+
+    display: none;
+
+    padding: 8px 12px;
+
+    gap: 7px;
+
+    overflow-x: auto;
+
+    background: white;
+
+    border-top: 1px solid var(--border);
+}
+
+.quick-btn {
+
+    white-space: nowrap;
+
+    border: 1px solid #dbc8ce;
+
+    background: #fff8fa;
+
+    color: var(--burgundy);
+
+    padding: 7px 10px;
+
+    border-radius: 18px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* ================= INPUT ================= */
+
+#input-area {
+
+    display: none;
+
+    padding: 12px;
+
+    background: white;
+
+    border-top: 1px solid var(--border);
+
+    gap: 8px;
+
+    align-items: flex-end;
+}
+
+textarea {
+
+    flex: 1;
+
+    padding: 12px 15px;
+
+    border: 1.5px solid var(--border);
+
+    border-radius: 18px;
+
+    resize: none;
+
+    min-height: 43px;
+
+    max-height: 130px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+textarea:focus {
+
+    border-color: var(--burgundy);
+}
+
+.send-btn {
+
+    background: var(--burgundy);
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 17px;
+
+    border-radius: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* ================= LOADING ================= */
+
+.typing {
+
+    opacity: .65;
+
+    font-style: italic;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px) {
+
+    body {
+        padding: 0;
+    }
+
+    .container {
+
+        height: 100vh;
+
+        border-radius: 0;
+    }
+
+    .header-main {
+
+        font-size: 16px;
+    }
+
+    #chat-container {
+
+        padding: 12px;
+    }
+
+    .message {
+
+        max-width: 95%;
+
+        font-size: 13.5px;
+    }
+
+    #welcome {
+
+        padding: 24px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="header-title">
+
+        <div class="header-icon">
+            💊
+        </div>
+
+        <div>
+
+            <div class="header-main">
+                Clinical Pharmacy Preceptor
+            </div>
+
+            <div class="header-sub">
+                Internal Medicine • Clinical Reasoning • Evidence-Based
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="new-case-btn"
+        onclick="newCase()">
+
+        New Case
+
+    </button>
+
+</div>
+
+
+
+<!-- WELCOME -->
+
+<div id="welcome">
+
+    <div class="welcome-icon">
+        🩺
+    </div>
+
+    <div class="welcome-title">
+        Hello Pharmacist
+    </div>
+
+    <div class="welcome-text">
+
+        أنا معك كـ
+        <b>Clinical Pharmacy Preceptor</b>
+        خلال الـ Internal Medicine rotation.
+
+        <br><br>
+
+        خذي الـCase من الراوند،
+        وأدخلي لي المعلومات اللي عندك فقط.
+
+        <br><br>
+
+        ما راح أعطيك الإجابة مباشرة.
+        بنمشي خطوة بخطوة من
+        <b>Clinical Assessment</b>
+        إلى
+        <b>Recommendation</b>.
+
+        <br><br>
+
+        <small>
+        لا تدخلي اسم المريض أو MRN أو أي معلومات تعريفية.
+        </small>
+
+    </div>
+
+
+    <button
+        class="start-btn"
+        onclick="startSession()">
+
+        Start Clinical Session
+
+    </button>
+
+</div>
+
+
+
+<!-- CASE STATUS -->
+
+<div id="case-bar">
+
+    <span class="status">
+        ● Active Clinical Case
+    </span>
+
+    <span>
+        Internal Medicine
+    </span>
+
+</div>
+
+
+
+<!-- CHAT -->
+
+<div id="chat-container"></div>
+
+
+
+<!-- QUICK ACTIONS -->
+
+<div id="quick-actions">
+
+    <button
+        class="quick-btn"
+        onclick="quickSend('ساعديني أحدد الـmain clinical problem.')">
+
+        Main Problem
+
+    </button>
+
+
+    <button
+        class="quick-btn"
+        onclick="quickSend('خلينا نراجع الـmedications واحدة واحدة.')">
+
+        Medications
+
+    </button>
+
+
+    <button
+        class="quick-btn"
+        onclick="quickSend('راجعي الأدوية من ناحية indication, effectiveness, safety, dose, interactions وrenal adjustment.')">
+
+        Medication Review
+
+    </button>
+
+
+    <button
+        class="quick-btn"
+        onclick="quickSend('وش المعلومات المهمة اللي ما زالت ناقصة؟')">
+
+        Missing Data
+
+    </button>
+
+
+    <button
+        class="quick-btn"
+        onclick="quickSend('الحين challenge my assessment وقولي وش فاتني.')">
+
+        Challenge Me
+
+    </button>
+
+</div>
+
+
+
+<!-- INPUT -->
+
+<div id="input-area">
+
+    <textarea
+        id="user-input"
+        placeholder="اكتبي معلومات الحالة أو إجابتك الإكلينيكية..."
+        rows="1">
+    </textarea>
+
+
+    <button
+        class="send-btn"
+        onclick="sendMessage()">
+
+        إرسال
+
+    </button>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   BACKEND URL
+
+   سنضع رابط Cloudflare Worker هنا لاحقًا.
+===================================================== */
+
+const BACKEND_URL =
+    "YOUR_CLOUDFLARE_WORKER_URL";
+
+
+/* =====================================================
+   CHAT HISTORY
+===================================================== */
+
+let chatHistory = [];
+
+
+/* =====================================================
+   START SESSION
+===================================================== */
+
+function startSession() {
+
+    document.getElementById("welcome")
+        .style.display = "none";
+
+    document.getElementById("chat-container")
+        .style.display = "flex";
+
+    document.getElementById("input-area")
+        .style.display = "flex";
+
+    document.getElementById("quick-actions")
+        .style.display = "flex";
+
+    document.getElementById("case-bar")
+        .style.display = "flex";
+
+
+    const welcomeMessage = `
+
+Hello Pharmacist 💊
+
+أنا معك كـ Clinical Pharmacy Preceptor خلال الـInternal Medicine rotation.
+
+إذا عندك Case أخذتيه من الراوند، ارسليه لي بالمعلومات اللي عندك فقط، حتى لو كانت ناقصة.
+
+ما راح أعطيك الإجابة مباشرة؛ بنمشي فيه كأننا في الراوند ونوصل للـAssessment والـRecommendation خطوة بخطوة.
+
+ابدئي بأول Case.
+
+`;
+
+
+    appendMessage(
+        welcomeMessage,
+        "ai-msg"
+    );
+
+}
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
+async function sendMessage() {
+
+    const input =
+        document.getElementById("user-input");
+
+    const text =
+        input.value.trim();
+
+    if (!text) return;
+
+
+    appendMessage(
+        text,
+        "user-msg"
+    );
+
+
+    input.value = "";
+
+    input.style.height = "auto";
+
+
+    chatHistory.push({
+
+        role: "user",
+
+        parts: [
+            {
+                text: text
+            }
+        ]
+
+    });
+
+
+    showTyping();
+
+
+    try {
+
+        const result =
+            await callBackend(
+                text
+            );
+
+
+        removeTyping();
+
+
+        appendMessage(
+            result.text,
+            "ai-msg"
+        );
+
+
+        chatHistory.push({
+
+            role: "model",
+
+            parts: [
+                {
+                    text: result.text
+                }
+            ]
+
+        });
+
+
+    } catch (error) {
+
+        removeTyping();
+
+
+        appendMessage(
+
+            "صار خطأ في الاتصال بالخادم. بنتأكد من الـBackend في الخطوات القادمة.",
+
+            "ai-msg"
+
+        );
+
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =====================================================
+   BACKEND REQUEST
+===================================================== */
+
+async function callBackend(message) {
+
+    if (
+        BACKEND_URL ===
+        "YOUR_CLOUDFLARE_WORKER_URL"
+    ) {
+
+        throw new Error(
+            "Backend URL not configured yet."
+        );
+
+    }
+
+
+    const response =
+        await fetch(
+
+            BACKEND_URL,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    message: message,
+
+                    history: chatHistory
+
+                })
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Backend request failed."
+        );
+
+    }
+
+
+    return await response.json();
+
+}
+
+
+/* =====================================================
+   QUICK ACTION
+===================================================== */
+
+function quickSend(text) {
+
+    const input =
+        document.getElementById("user-input");
+
+    input.value = text;
+
+    sendMessage();
+
+}
+
+
+/* =====================================================
+   NEW CASE
+===================================================== */
+
+function newCase() {
+
+    chatHistory = [];
+
+    document.getElementById(
+        "chat-container"
+    ).innerHTML = "";
+
+
+    appendMessage(
+
+        `
+
+New Case 🩺
+
+ارسلي لي الـCase الجديدة بالمعلومات اللي عندك فقط.
+
+ما يحتاج تكون كاملة.
+
+ابدئي بـ:
+
+Age:
+Sex:
+Weight:
+Main complaint:
+Relevant history:
+Diagnosis / suspected diagnosis:
+Current medications:
+Available clinical data:
+
+`,
+
+        "ai-msg"
+
+    );
+
+}
+
+
+/* =====================================================
+   APPEND MESSAGE
+===================================================== */
+
+function appendMessage(
+    text,
+    className
+) {
+
+    const chat =
+        document.getElementById(
+            "chat-container"
+        );
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "message " + className;
+
+
+    message.innerHTML =
+        formatText(text);
+
+
+    chat.appendChild(message);
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+/* =====================================================
+   FORMAT TEXT
+===================================================== */
+
+function formatText(text) {
+
+    let html =
+        String(text);
+
+
+    html =
+        html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+
+    html =
+        html.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    html =
+        html.replace(
+            /^### (.*)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    html =
+        html.replace(
+            /^## (.*)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    html =
+        html.replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    return html;
+
+}
+
+
+/* =====================================================
+   TYPING
+===================================================== */
+
+function showTyping() {
+
+    const chat =
+        document.getElementById(
+            "chat-container"
+        );
+
+
+    const typing =
+        document.createElement("div");
+
+
+    typing.id = "typing";
+
+    typing.className =
+        "message ai-msg typing";
+
+
+    typing.textContent =
+        "Clinical Preceptor is thinking…";
+
+
+    chat.appendChild(typing);
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+function removeTyping() {
+
+    const typing =
+        document.getElementById(
+            "typing"
+        );
+
+
+    if (typing) {
+
+        typing.remove();
+
+    }
+
+}
+
+
+/* =====================================================
+   TEXTAREA RESIZE
+===================================================== */
+
+document
+    .getElementById("user-input")
+    .addEventListener(
+        "input",
+        function() {
+
+            this.style.height =
+                "auto";
+
+            this.style.height =
+                Math.min(
+                    this.scrollHeight,
+                    130
+                ) + "px";
+
+        }
+    );
+
+
+/* =====================================================
+   ENTER TO SEND
+===================================================== */
+
+document
+    .getElementById("user-input")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
